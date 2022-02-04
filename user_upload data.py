@@ -22,7 +22,7 @@ first,center,last=st.columns(3)
 first.image(image)
 center.write("")
 last.image(image1)
-data=pd.read_csv("analysis data.csv")
+data=pd.read_csv("Market basket analysis data.csv")
 def st_csv_download_button(df):
     csv = df.to_csv(index=False) #if no filename is given, a string is returned
     b64 = base64.b64encode(csv.encode()).decode()
