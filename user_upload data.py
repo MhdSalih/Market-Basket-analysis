@@ -239,5 +239,12 @@ if upload_file is not None:
 
 # In[16]:
 
-
+    st.
     st.write(rules)
+    plt.rcParams['figure.figsize'] = (10,6)
+    color = plt.cm.inferno(np.linspace(0,1,20))
+    rules['antecedents'].value_counts().head(20).plot.bar(color = color)
+    plt.title('Top 20 Most Frequent Items')
+    plt.ylabel('Counts')
+    plt.xlabel('Items')
+    plt.show()
