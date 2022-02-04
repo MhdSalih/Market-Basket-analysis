@@ -102,7 +102,7 @@ if upload_file is not None:
     df=df.replace({'Category_Code':new})
     df['Design'] = np.where(df['Design']== "diamond",df["Category_Code"] , df['Design'])
     df["QUANTITY"]=1
-    df2=df[["VOCNO","Design",'QUANTITY']]
+    df2=df[["VOCNO","Design",'QUANTITY',"PRICE_RANGE"]]
     #df2 = df2.astype({"PRICE_RANGE": object})
 
     
