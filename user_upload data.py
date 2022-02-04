@@ -157,7 +157,9 @@ if upload_file is not None:
 
 # In[16]:
 
-    st.title("Market Basket Analysis with different Design")
+    #st.title("Market Basket Analysis with different Design")
+    new_title = '<p style="font-family:calibri; color:#0094cb; font-size: 42px;">Market Basket Analysis with different Design</p>'
+    st.markdown(new_title, unsafe_allow_html=True)
     st.write(rules)
     st.write("----------------------------------------------------------------------------------------")
     from pandas.plotting import parallel_coordinates
