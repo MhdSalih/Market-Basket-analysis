@@ -239,7 +239,7 @@ if upload_file is not None:
 
 # In[16]:
 
-    st.
+    
     st.write(rules)
     plt.rcParams['figure.figsize'] = (10,6)
     color = plt.cm.inferno(np.linspace(0,1,20))
