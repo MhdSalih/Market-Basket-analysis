@@ -157,7 +157,7 @@ if upload_file is not None:
 
 # In[16]:
 
-
+    st.title("Market Basket Analysis with different Design")
     st.write(rules)
     st.write("----------------------------------------------------------------------------------------")
     from pandas.plotting import parallel_coordinates
@@ -239,7 +239,7 @@ if upload_file is not None:
 
 # In[16]:
 
-    
+    st.title("Market Basket Analysis with different Price Range")
     st.write(rules)
     
     fig3=plt.figure(figsize=(12,7))
