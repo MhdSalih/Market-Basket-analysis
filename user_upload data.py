@@ -246,7 +246,7 @@ if upload_file is not None:
     #plt.rcParams['figure.figsize'] = (10,6)
     color = plt.cm.inferno(np.linspace(0,1,20))
     rules['Antecedents'].value_counts().head(20).plot.bar(color = color)
-    plt.title('Top 20 Most Frequent Items')
+    plt.title('Top 20 Most Frequent Items',fontsize=25,color="#0094cb",loc='left')
     plt.ylabel('Counts')
     plt.xlabel('Items')
     #plt.show()
