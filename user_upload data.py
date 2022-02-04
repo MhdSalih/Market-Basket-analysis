@@ -241,7 +241,7 @@ if upload_file is not None:
 
 # In[16]:
 
-    st.title("Market Basket Analysis with different Price Range")
+    #st.title("Market Basket Analysis with different Price Range")
     new_title2 = '<p style="font-family:calibri; color:#0094cb; font-size: 36px;">Market Basket Analysis with different Price Range</p>'
     st.markdown(new_title2, unsafe_allow_html=True)
     st.write(rules)
