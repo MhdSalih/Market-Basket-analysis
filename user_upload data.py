@@ -103,7 +103,7 @@ if upload_file is not None:
     df['Design'] = np.where(df['Design']== "diamond",df["Category_Code"] , df['Design'])
     df["QUANTITY"]=1
     df2=df[["VOCNO","Design",'QUANTITY']]
-    df2 = df2.astype({"PRICE_RANGE": object})
+    #df2 = df2.astype({"PRICE_RANGE": object})
 
     
     basket=df2.groupby(["VOCNO","Design"])["QUANTITY"].sum().unstack().reset_index().fillna(0).set_index("VOCNO")
