@@ -189,7 +189,7 @@ if upload_file is not None:
     st.write(" ")
     st.write("----------------------------------------------------------------- ")
     
-    fig2=plt.figure(figsize=(8,6))
+    fig2=plt.figure(figsize=(6,2))
     #plt.title('Left Title', loc='left')
     plt.title('Optimality of the support-confidence border ', fontsize=25,color="#0094cb",loc='left')
     sns.scatterplot(x = "support", y = "confidence", 
@@ -249,7 +249,7 @@ if upload_file is not None:
     st.write(" ")
     
     
-    fig3=plt.figure(figsize=(8,4))
+    fig3=plt.figure(figsize=(6,2))
     #plt.rcParams['figure.figsize'] = (10,6)
     color = plt.cm.inferno(np.linspace(0,1,20))
     rules['Antecedents'].value_counts().head(20).plot.bar(color = color)
