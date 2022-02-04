@@ -158,7 +158,7 @@ if upload_file is not None:
 # In[16]:
 
     #st.title("Market Basket Analysis with different Design")
-    new_title = '<p style="font-family:calibri; color:#0094cb; font-size: 42px;">Market Basket Analysis with different Design</p>'
+    new_title = '<p style="font-family:calibri; color:#0094cb; font-size: 36px;">Market Basket Analysis with different Design</p>'
     st.markdown(new_title, unsafe_allow_html=True)
     st.write(rules)
     st.write("----------------------------------------------------------------------------------------")
@@ -242,7 +242,12 @@ if upload_file is not None:
 # In[16]:
 
     st.title("Market Basket Analysis with different Price Range")
+    new_title2 = '<p style="font-family:calibri; color:#0094cb; font-size: 36px;">Market Basket Analysis with different Price Range</p>'
+    st.markdown(new_title2, unsafe_allow_html=True)
     st.write(rules)
+    st.write(" ")
+    st.write(" ")
+    
     
     fig3=plt.figure(figsize=(12,7))
     #plt.rcParams['figure.figsize'] = (10,6)
