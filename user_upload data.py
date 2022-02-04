@@ -206,6 +206,7 @@ if upload_file is not None:
     
     
     st.write("----------------------------------------------------------------- ")
+    df2 = df2.astype({"PRICE_RANGE": object})
     basket=df2.groupby(["VOCNO","PRICE_RANGE"])["QUANTITY"].sum().unstack().reset_index().fillna(0).set_index("VOCNO")
     basket=pd.DataFrame(basket)
 
