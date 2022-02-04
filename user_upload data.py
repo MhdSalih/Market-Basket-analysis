@@ -94,14 +94,18 @@ if upload_file is not None:
         print(e)
      
     
-
+    df['PRICE_RANGE'] = pd.cut(x=df["NETVALUECC1"], bins=[0,2000,10000,20000,30000,40000,50000,60000,75000,600000],labels=['0-2000', '2000-10000', '10000-20000',"20000-30000","30000-40000","40000-50000","50000-60000","60000-75000","75000 and above"])
+    #pd.cut(df['some_col'], bins=[0,20,40,60], labels=['0-20', '20-40', '40-60']) 
+    df=df.dropna()
     df["Design"]= df.Design.str.lower()
     df["Design"]=df["Design"].astype('category')
     df=df.replace({'Category_Code':new})
     df['Design'] = np.where(df['Design']== "diamond",df["Category_Code"] , df['Design'])
     df["QUANTITY"]=1
     df2=df[["VOCNO","Design",'QUANTITY']]
+    df2 = df2.astype({"PRICE_RANGE": object})
 
+    
     basket=df2.groupby(["VOCNO","Design"])["QUANTITY"].sum().unstack().reset_index().fillna(0).set_index("VOCNO")
     basket=pd.DataFrame(basket)
 
@@ -199,4 +203,40 @@ if upload_file is not None:
     st.write("**Support**     : Support is an indication of how frequently the items appear in the data. It refers to how often a given rule appears in the database being mined.")
     st.write("**Confidence**  : Confidence indicates the number of times the if-then statements are found true.Confidence refers to the amount of times a given rule turns out to be true in practice. A rule may show a strong correlation in a data set because it appears very often but may occur far less when applied. This would be a case of high support, but low confidence.Conversely, a rule might not particularly stand out in a data set, but continued analysis shows that it occurs very frequently. This would be a case of high confidence and low support. Using these measures helps analysts separate causation from correlation, and allows them to properly value a given rule. ")
     st.write("**Lift**        : lift can be used to compare confidence with expected confidence, or how many times an if-then statement is expected to be found true. It is the ratio of confidence to support. If the lift value is a negative value, then there is a negative correlation between datapoints. If the value is positive, there is a positive correlation, and if the ratio equals 1, then there is no correlation.")
+    
+    
+    st.write("----------------------------------------------------------------- ")
+    basket=df2.groupby(["VOCNO","PRICE_RANGE"])["QUANTITY"].sum().unstack().reset_index().fillna(0).set_index("VOCNO")
+    basket=pd.DataFrame(basket)
 
+    def encode_unit(x):
+        if x <= 0:
+            return 0
+        if x >= 1:
+            return 1
+    
+    basket_set = basket.applymap(encode_unit)
+
+    frequent_itemsets = apriori(basket_set, min_support=0.08, use_colnames=True)
+    
+    rules = association_rules(frequent_itemsets, metric="lift", min_threshold=1)
+    rules["antecedents"] = rules["antecedents"].apply(lambda x: ', '.join(list(x))).astype("unicode")
+    rules["consequents"] = rules["consequents"].apply(lambda x: ', '.join(list(x))).astype("unicode")
+    rules=rules.head(40)
+    rules= rules.sort_values(by = 'confidence', ascending = False)
+    #rules.columns = map(str.upper, rules.columns)
+    rules.columns =["Antecedents","Consequents",'AntecedentSupport','ConsequentSupport',"Support","Confidence","Lift","Leverage","Conviction"]
+    rules= rules.iloc[:, :-2]
+    
+    st.markdown(
+    """<style>
+        .dataframe {text-align: left !important}
+    </style>
+    """, unsafe_allow_html=True) 
+    
+#frequent_itemsets
+
+# In[16]:
+
+
+    st.write(rules)
