@@ -165,7 +165,7 @@ if upload_file is not None:
     
     
     
-    fig4=plt.figure(figsize=(4,2))
+    fig4=plt.figure(figsize=(10,6))
     #plt.rcParams['figure.figsize'] = (10,6)
     color = plt.cm.inferno(np.linspace(0,1,20))
     rules['Antecedents'].value_counts().head(20).plot.bar(color = color)
