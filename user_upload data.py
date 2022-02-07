@@ -162,6 +162,23 @@ if upload_file is not None:
     st.markdown(new_title, unsafe_allow_html=True)
     st.write(rules)
     st.write("----------------------------------------------------------------------------------------")
+    
+    
+    
+    fig4=plt.figure(figsize=(4,2))
+    #plt.rcParams['figure.figsize'] = (10,6)
+    color = plt.cm.inferno(np.linspace(0,1,20))
+    rules['Antecedents'].value_counts().head(20).plot.bar(color = color)
+    plt.title('Top 20 Most Frequent Items',fontsize=25,color="#0094cb",loc='left')
+    plt.ylabel('Counts')
+    plt.xlabel('Items')
+    #plt.show()
+    st.pyplot(fig4)
+
+    st.write("----------------------------------------------------------------------------------------")
+    
+    
+    
     from pandas.plotting import parallel_coordinates
 
     # Compute the frequent itemsets
@@ -248,6 +265,7 @@ if upload_file is not None:
     st.write(" ")
     st.write(" ")
     
+    st.write("----------------------------------------------------------------------------------------")
     
     fig3=plt.figure(figsize=(10,6))
     #plt.rcParams['figure.figsize'] = (10,6)
@@ -258,3 +276,23 @@ if upload_file is not None:
     plt.xlabel('Items')
     #plt.show()
     st.pyplot(fig3)
+    
+    st.write("----------------------------------------------------------------------------------------")
+    
+    
+    rules = association_rules(frequent_itemsets, metric = 'confidence', 
+                              min_threshold = 0.55)
+
+    # Convert rules into coordinates suitable for use in a parallel coordinates plot
+    coords = rules_to_coordinates(rules.head(40))
+
+    # Generate parallel coordinates plot
+    
+    fig=plt.figure(figsize=(2,4))
+    parallel_coordinates(coords, 'rule')
+    plt.legend([])
+    plt.grid(True)
+    plt.title(' Parallel coordinates to visualize rules', fontsize=15,color="#0094cb",loc='left')
+    #st.write("**parallel coordinates to visualize rules**")
+    st.write(" ")
+    st.pyplot(fig)
