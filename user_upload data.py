@@ -169,7 +169,7 @@ if upload_file is not None:
     #plt.rcParams['figure.figsize'] = (10,6)
     color = plt.cm.inferno(np.linspace(0,1,20))
     rules['Antecedents'].value_counts().head(20).plot.bar(color = color)
-    plt.title('Top 20 Most Frequent Items',fontsize=25,color="#0094cb",loc='left')
+    plt.title('Top 20 Most Frequent Items',fontsize=15,color="#0094cb",loc='left')
     plt.ylabel('Counts')
     plt.xlabel('Items')
     #plt.show()
@@ -208,7 +208,7 @@ if upload_file is not None:
     
     fig2=plt.figure(figsize=(10,6))
     #plt.title('Left Title', loc='left')
-    plt.title('Optimality of the support-confidence border ', fontsize=25,color="#0094cb",loc='left')
+    plt.title('Optimality of the support-confidence border ', fontsize=15,color="#0094cb",loc='left')
     sns.scatterplot(x = "support", y = "confidence", 
                    size = "lift", data = rules)#.set(title="Optimality of the support-confidence border")
 
@@ -271,7 +271,7 @@ if upload_file is not None:
     #plt.rcParams['figure.figsize'] = (10,6)
     color = plt.cm.inferno(np.linspace(0,1,20))
     rules['Antecedents'].value_counts().head(20).plot.bar(color = color)
-    plt.title('Top 20 Most Frequent Items',fontsize=25,color="#0094cb",loc='left')
+    plt.title('Top 20 Most Frequent Items',fontsize=15,color="#0094cb",loc='left')
     plt.ylabel('Counts')
     plt.xlabel('Items')
     #plt.show()
